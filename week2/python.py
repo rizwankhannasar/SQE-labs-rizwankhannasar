@@ -15,19 +15,18 @@ categories = [
     "Portability"
 ]
 
-# Ratings (converted approx to 1–5 scale)
-CHATGPT_RATINGS = [3.75, 2.4, 3.0, 1.9, 3.0, 3.0, 1.6, 1.75]
-CLOUD_AI_RATINGS = [3.75, 3.6, 3.25, 1.9, 3.0, 4.5, 2.0, 1.75]
+# NEW RATINGS (your given values)
+CHATGPT_RATINGS = [5, 4.5, 6, 3.5, 4.5, 6, 5, 4]
+CLOUD_AI_RATINGS = [5, 6, 6, 3.5, 4.5, 6, 4.5, 4]
 
-# Weighted Scores (your actual totals)
-CHATGPT_SCORE = round(sum([0.75,0.48,0.6,0.38,0.6,0.6,0.32,0.35]), 2)
-CLOUD_AI_SCORE = round(sum([0.75,0.72,0.65,0.38,0.6,0.9,0.4,0.35]), 2)
+# (Optional) Update scores automatically
+CHATGPT_SCORE = round(sum(CHATGPT_RATINGS) / len(CHATGPT_RATINGS), 2)
+CLOUD_AI_SCORE = round(sum(CLOUD_AI_RATINGS) / len(CLOUD_AI_RATINGS), 2)
 
 # -----------------------------
 # RADAR CHART SETUP
 # -----------------------------
 N = len(categories)
-
 angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
 
 # Close the loop
@@ -55,9 +54,9 @@ ax.fill(angles, CLOUD_AI_RATINGS, alpha=0.1)
 ax.set_xticks(angles[:-1])
 ax.set_xticklabels(categories)
 
-# Scale (1–5)
-ax.set_yticks([1, 2, 3, 4, 5])
-ax.set_ylim(0, 5)
+# ⚠️ IMPORTANT: Your scale now goes up to 6 (not 5)
+ax.set_yticks([1, 2, 3, 4, 5, 6])
+ax.set_ylim(0, 6)
 
 # Title
 plt.title("Quality Comparison: ChatGPT vs Cloud AI App", size=14)
